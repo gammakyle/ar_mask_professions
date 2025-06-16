@@ -5,41 +5,51 @@
     <script src="./mindar-face-aframe.prod.js"></script>
     <script src="./aframe-extras.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-	const list = ["glasses1", "glasses2", "hat1", "hat2", "earring"];
-	const visibles = [true, false, false, true, true];
-	const setVisible = (button, entities, visible) => {
-	  if (visible) {
-	    button.classList.add("selected");
-	  } else {
-	    button.classList.remove("selected");
-	  }
-	  entities.forEach((entity) => {
-	    entity.setAttribute("visible", visible);
-	  });
-	}
-	list.forEach((item, index) => {
-	  const button = document.querySelector("#" + item);
-	  const entities = document.querySelectorAll("." + item + "-entity");
-	  setVisible(button, entities, visibles[index]);
-	  button.addEventListener('click', () => {
-	    visibles[index] = !visibles[index];
-	    setVisible(button, entities, visibles[index]);
-	  });
-	});
+  var prof_iterator = 0;
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const professions = ["default", "tokar", "electro", "liteo", "itwork", "constructor", "technolog", "halvanic", "svarshik", "ispitatel"];
+    const professions_visibles = [true, false, false, false, false, false, false, false, false, false, false];
+
+      visible_switch = (prof_iterator) => {
+        professions_visibles[prof_iterator] = !professions_visibles[prof_iterator];
+        var entities = document.querySelectorAll("." + professions[prof_iterator] + "-class");
+        entities.forEach((entity) => {
+          entity.setAttribute("visible", professions_visibles[prof_iterator]);
+        });
+        console.log(prof_iterator);
+        console.log(professions_visibles);
+        }
       })
       /*-скрипт нажатия на стрелки-*/
       document.addEventListener('keydown', (event) => {
         switch(event.key) {
           case 'ArrowLeft':
             console.log('Стрелка влево');
+            visible_switch(prof_iterator);
+            prof_iterator--;
+            if (prof_iterator==-1){
+              prof_iterator=9;
+            }
+            visible_switch(prof_iterator);
+
           break;
           case 'ArrowRight':
             console.log('Стрелка вправо');
+            visible_switch(prof_iterator);
+            prof_iterator++;
+            if (prof_iterator==10){
+              prof_iterator=0;
+            }
+            else{
+            }
+            visible_switch(prof_iterator);
+
           break;
       }
     });
     /*-конец скрипта нажатия на стрелки-*/
+
     </script>
     <style>
       body {
@@ -74,63 +84,184 @@
   </head>
   <body>
     <div class="example-container">
-      <div class="options-panel">
-	<img id="hat1" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat/thumbnail.png"/>
-	<img id="hat2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat2/thumbnail.png"/>
-	<img id="glasses1" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/thumbnail.png"/>
-	<img id="glasses2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses2/thumbnail.png"/>
-	<img id="earring" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/earring/thumbnail.png"/>
-  <img id="tokar_img" src="tokar.png" crossorigin="anonymous">
-      </div>
       <a-scene mindar-face embedded look-controls="enabled: false" wasd-controls="enabled: false" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
         <!--общие ассеты для сцен -->
         <a-assets>
-          <a-asset-item id="headModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/sparkar/headOccluder.glb"></a-asset-item>
-          <a-asset-item id="tokar_1" src="./tokar_1.gltf"></a-asset-item>
-          <a-asset-item id="tokar_2" src="./tokar_2.gltf"></a-asset-item>
-          <a-asset-item id="glassesModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf"></a-asset-item>
-          <a-asset-item id="electro_glasses" src="./electro_glasses.gltf"></a-asset-item>
-          <a-asset-item id="glassesModel2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses2/scene.gltf"></a-asset-item>
-          <a-asset-item id="hatModel" src="./electro_hat.gltf"></a-asset-item>
-          <a-asset-item id="hatModel2" src="./kask.gltf"></a-asset-item>
-          <a-asset-item id="earringModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/earring/scene.gltf"></a-asset-item>
+          <a-asset-item id="headModel" src="./head/headOccluder.glb"></a-asset-item>
+          
+          <!--ассеты изображения -->
+          <img id="default_img" src="./default/default.png" crossorigin="anonymous"/>
+          <img id="tokar_img" src="./tokar/tokar.png" crossorigin="anonymous"/>
+          <img id="electro_img" src="./electro/electro.png" crossorigin="anonymous"/>
+          <img id="liteo_img" src="./liteo/liteo.png" crossorigin="anonymous"/>
+          <img id="itwork_img" src="./itwork/itwork.png" crossorigin="anonymous"/>
+          <img id="constructor_img" src="./constructor/constructor.png" crossorigin="anonymous"/>
+          <img id="technolog_img" src="./technolog/technolog.png" crossorigin="anonymous"/>
+          <img id="halvanic_img" src="./halvanic/halvanic.png" crossorigin="anonymous"/>
+          <img id="svarshik_img" src="./svarshik/svarshik.png" crossorigin="anonymous"/>
+          <img id="ispitatel_img" src="./ispitatel/ispitatel.png" crossorigin="anonymous"/>
+          <!--конец ассеты изображения -->
+
+          <!--ассеты токарь -->
+          <a-asset-item id="tokar_scene_model_1" src="./tokar/tokar_scene_model_1.gltf"></a-asset-item>
+          <a-asset-item id="tokar_scene_model_2" src="./tokar/tokar_scene_model_2.gltf"></a-asset-item>
+          <a-asset-item id="tokar_face_model_1" src="./tokar/tokar_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="tokar_face_model_2" src="./tokar/tokar_face_model_2.gltf"></a-asset-item>
+
+          <a-asset-item id="electro_face_model_1" src="./electro/electro_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="electro_face_model_2" src="./electro/electro_face_model_2.gltf"></a-asset-item>
+
+          <a-asset-item id="liteo_face_model_1" src="./liteo/liteo_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="liteo_face_model_2" src="./liteo/liteo_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="liteo_face_model_3" src="./liteo/liteo_face_model_3.gltf"></a-asset-item>
+
+          <a-asset-item id="itwork_face_model_1" src="./itwork/itwork_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="itwork_face_model_2" src="./itwork/itwork_face_model_2.gltf"></a-asset-item>
+
+          <a-asset-item id="constructor_face_model_1" src="./constructor/constructor_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="constructor_face_model_2" src="./constructor/constructor_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="constructor_face_model_3" src="./constructor/constructor_face_model_3.gltf"></a-asset-item>
+
+          <a-asset-item id="technolog_face_model_1" src="./technolog/technolog_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="technolog_face_model_2" src="./technolog/technolog_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="technolog_face_model_3" src="./technolog/technolog_face_model_3.gltf"></a-asset-item>
+
+          <a-asset-item id="halvanic_face_model_1" src="./halvanic/halvanic_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="halvanic_face_model_2" src="./halvanic/halvanic_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="halvanic_face_model_3" src="./halvanic/halvanic_face_model_3.gltf"></a-asset-item>
+
+          <a-asset-item id="svarshik_face_model_1" src="./svarshik/svarshik_face_model_1.gltf"></a-asset-item>
+
+          <a-asset-item id="ispitatel_face_model_1" src="./ispitatel/ispitatel_face_model_1.gltf"></a-asset-item>
+          <!--конец ассеты токарь -->
         </a-assets>
+
+        <!--камера и голова-->
         <a-camera active="false" look-controls="enabled: false" wasd-controls="enabled: false" position="0 0 0" ></a-camera>
+        <a-entity mindar-face-target="anchorIndex: 168">
+	        <a-gltf-model mindar-face-occluder position="0 -0.3 0.15"rotation="0 0 0" scale="0.075 0.065 0.065" src="#headModel"></a-gltf-model>
+        </a-entity>
+        <!--конец камера и голова-->
+
+        <!--дефолт-->
+        <a-plane src="#default_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true" class="default-class">
+        </a-plane>
+        <!--конец дефолт-->
+
 	      <!--токарь-->
-        <a-plane src="#tokar_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;"></a-plane>
+        <a-plane src="#tokar_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="tokar-class">
+        </a-plane>
         <a-entity>
-	          <a-gltf-model position="-0.9 1.1 -5"rotation="0 -90 0" scale="0.12 0.12 0.12" src="#tokar_1" animation-mixer="clip: *"></a-gltf-model>
+	          <a-gltf-model position="-0.9 1.1 -5"rotation="0 -90 0" scale="0.12 0.12 0.12" src="#tokar_scene_model_1" animation-mixer="clip: *" visible="false" class="tokar-class"></a-gltf-model>
         </a-entity>
         <a-entity>
-	          <a-gltf-model position="0.9 -1 -5"rotation="0 -140 0" scale="0.15 0.15 0.15" src="#tokar_2" animation-mixer="clip: *"></a-gltf-model>
-        </a-entity>
-         <a-entity mindar-face-target="anchorIndex: 10">
-	          <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#hatModel2" class="hat2-entity" visible="false"></a-gltf-model>
-        </a-entity>
-        <!--конец токаря-->
-
-
-        <a-entity mindar-face-target="anchorIndex: 168">
-	  <a-gltf-model mindar-face-occluder position="0 -0.3 0.15"rotation="0 0 0" scale="0.075 0.065 0.065" src="#headModel"></a-gltf-model>
+	          <a-gltf-model position="0.9 -1 -5"rotation="0 -140 0" scale="0.15 0.15 0.15" src="#tokar_scene_model_2" animation-mixer="clip: *" visible="false" class="tokar-class"></a-gltf-model>
         </a-entity>
         <a-entity mindar-face-target="anchorIndex: 10">
-	  <a-gltf-model rotation="0 -0 0" position="0 0.55 -0.6" scale="0.6 0.6 0.6" src="#hatModel" class="hat1-entity" visible="false"></a-gltf-model>
+	          <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#tokar_face_model_1" visible="false" class="tokar-class"></a-gltf-model>
         </a-entity>
         <a-entity mindar-face-target="anchorIndex: 10">
-	  <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#hatModel2" class="hat2-entity" visible="false"></a-gltf-model>
+	          <a-gltf-model rotation="0 0 0" position="0 -0.6 0.2" scale="0.075 0.065 0.065" src="#tokar_face_model_2" visible="false" class="tokar-class"></a-gltf-model>
         </a-entity>
-        <a-entity mindar-face-target="anchorIndex: 168">
-	  <a-gltf-model rotation="0 -0 0" position="0 0 0" scale="0.01 0.01 0.01" src="#glassesModel" class="glasses1-entity" visible="false"></a-gltf-model>
+        <!--конец токарь-->
+
+        <!--электронщик-->
+        <a-plane src="#electro_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="electro-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.6 0.2" scale="0.075 0.065 0.065" src="#electro_face_model_1" visible="false" class="electro-class"></a-gltf-model>
         </a-entity>
-        <a-entity mindar-face-target="anchorIndex: 168">
-	  <a-gltf-model rotation="0 -90 0" position="0 0.1 0.1" scale="0.065 0.065 0.065" src="#electro_glasses" class="glasses2-entity" visible="false"></a-gltf-model>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#electro_face_model_2" visible="false" class="electro-class"></a-gltf-model>
         </a-entity>
-        <a-entity mindar-face-target="anchorIndex: 127">
-	  <a-gltf-model rotation="-0.1 -0 0" position="-0.1 -0.3 -0.3" scale="0.05 0.05 0.05" src="#earringModel" class="earring-entity" visible="false"></a-gltf-model>
+        <!--конец электронщик-->
+
+        <!--литейщик-->
+        <a-plane src="#liteo_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="liteo-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#liteo_face_model_1" visible="false" class="liteo-class"></a-gltf-model>
         </a-entity>
-        <a-entity mindar-face-target="anchorIndex: 356">
-	  <a-gltf-model rotation="0.1 -0 0" position="0.1 -0.3 -0.3" scale="0.05 0.05 0.05" src="#earringModel" class="earring-entity" visible="false"></a-gltf-model>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#liteo_face_model_2" visible="false" class="liteo-class"></a-gltf-model>
         </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#liteo_face_model_3" visible="false" class="liteo-class"></a-gltf-model>
+        </a-entity>
+        <!--конец литейщик-->
+
+        <!--itспец-->
+        <a-plane src="#itwork_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="itwork-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.6 0.2" scale="0.07 0.06 0.06" src="#itwork_face_model_1" visible="false" class="itwork-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.7 0.2" scale="0.075 0.07 0.065" src="#itwork_face_model_2" visible="false" class="itwork-class"></a-gltf-model>
+        </a-entity>
+        <!--конец itспец-->
+
+        <!--конструктор-->
+        <a-plane src="#constructor_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="constructor-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.6 0.2" scale="0.07 0.06 0.06" src="#constructor_face_model_2" visible="false" class="constructor-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.7 0.2" scale="0.075 0.07 0.065" src="#constructor_face_model_1" visible="false" class="constructor-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.7 0.2" scale="0.075 0.07 0.065" src="#constructor_face_model_3" visible="false" class="constructor-class"></a-gltf-model>
+        </a-entity>
+        <!--конец конструктор-->
+
+        <!--технолог-->
+        <a-plane src="#technolog_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="technolog-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#technolog_face_model_1" visible="false" class="technolog-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.6 0.2" scale="0.07 0.06 0.06" src="#technolog_face_model_2" visible="false" class="technolog-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#technolog_face_model_3" visible="false" class="technolog-class"></a-gltf-model>
+        </a-entity>
+        <!--конец технолог-->
+
+        <!--гальваник-->
+        <a-plane src="#halvanic_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="halvanic-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 -90 0" position="0 0 -0.7" scale="0.7 0.7 0.7" src="#halvanic_face_model_1" visible="false" class="halvanic-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#halvanic_face_model_2" visible="false" class="halvanic-class"></a-gltf-model>
+        </a-entity>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#halvanic_face_model_3" visible="false" class="halvanic-class"></a-gltf-model>
+        </a-entity>
+        <!--конец гальваник-->
+
+        <!--сварщик-->
+        <a-plane src="#svarshik_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="svarshik-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#svarshik_face_model_1" visible="false" class="svarshik-class"></a-gltf-model>
+        </a-entity>
+        <!--конец сварщик-->
+
+        <!--испытатель-->
+        <a-plane src="#ispitatel_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="false" class="ispitatel-class">
+        </a-plane>
+        <a-entity mindar-face-target="anchorIndex: 10">
+	          <a-gltf-model rotation="0 0 0" position="0 -0.55 0.2" scale="0.075 0.075 0.065" src="#ispitatel_face_model_1" visible="false" class="ispitatel-class"></a-gltf-model>
+        </a-entity>
+        <!--конец испытатель-->
+
+
+
+
       </a-scene>
     </div>
   </body>
