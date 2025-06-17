@@ -110,17 +110,26 @@
 
           <a-asset-item id="electro_face_model_1" src="./electro/electro_face_model_1.gltf"></a-asset-item>
           <a-asset-item id="electro_face_model_2" src="./electro/electro_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="electro_scene_model_1" src="./electro/electro_scene_model_1.gltf"></a-asset-item>
+          <a-asset-item id="electro_scene_model_2" src="./electro/electro_scene_model_2.gltf"></a-asset-item>
 
           <a-asset-item id="liteo_face_model_1" src="./liteo/liteo_face_model_1.gltf"></a-asset-item>
           <a-asset-item id="liteo_face_model_2" src="./liteo/liteo_face_model_2.gltf"></a-asset-item>
           <a-asset-item id="liteo_face_model_3" src="./liteo/liteo_face_model_3.gltf"></a-asset-item>
+          <a-asset-item id="liteo_scene_model_1" src="./liteo/liteo_scene_model_1.gltf"></a-asset-item>
+          <a-asset-item id="liteo_scene_model_2" src="./liteo/liteo_scene_model_2.gltf"></a-asset-item>
 
           <a-asset-item id="itwork_face_model_1" src="./itwork/itwork_face_model_1.gltf"></a-asset-item>
           <a-asset-item id="itwork_face_model_2" src="./itwork/itwork_face_model_2.gltf"></a-asset-item>
+          <a-asset-item id="itwork_scene_model_1" src="./itwork/itwork_scene_model_1.gltf"></a-asset-item>
+          <a-asset-item id="itwork_scene_model_2" src="./itwork/itwork_scene_model_2.gltf"></a-asset-item>
+          <a-asset-item id="itwork_scene_model_3" src="./itwork/itwork_scene_model_3.gltf"></a-asset-item>
 
           <a-asset-item id="constructor_face_model_1" src="./constructor/constructor_face_model_1.gltf"></a-asset-item>
           <a-asset-item id="constructor_face_model_2" src="./constructor/constructor_face_model_2.gltf"></a-asset-item>
           <a-asset-item id="constructor_face_model_3" src="./constructor/constructor_face_model_3.gltf"></a-asset-item>
+          <a-asset-item id="constructor_scene_model_1" src="./constructor/constructor_scene_model_1.gltf"></a-asset-item>
+          <a-asset-item id="constructor_scene_model_2" src="./constructor/constructor_scene_model_2.gltf"></a-asset-item>
 
           <a-asset-item id="technolog_face_model_1" src="./technolog/technolog_face_model_1.gltf"></a-asset-item>
           <a-asset-item id="technolog_face_model_2" src="./technolog/technolog_face_model_2.gltf"></a-asset-item>
@@ -133,6 +142,7 @@
           <a-asset-item id="svarshik_face_model_1" src="./svarshik/svarshik_face_model_1.gltf"></a-asset-item>
 
           <a-asset-item id="ispitatel_face_model_1" src="./ispitatel/ispitatel_face_model_1.gltf"></a-asset-item>
+          <a-asset-item id="ispitatel_scene_model_1" src="./ispitatel/ispitatel_scene_model_1.gltf"></a-asset-item>
           <!--конец ассеты токарь -->
         </a-assets>
 
@@ -174,6 +184,12 @@
         <a-entity mindar-face-target="anchorIndex: 10">
 	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#electro_face_model_2" visible="false" class="electro-class"></a-gltf-model>
         </a-entity>
+        <a-entity>
+	          <a-gltf-model position="-2.7 -4 -20"rotation="0 90 0" scale="0.2 0.2 0.2" src="#electro_scene_model_1" animation-mixer="clip: *" visible="false" class="electro-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="3.5 3.5 -20"rotation="-45 90 0" scale="0.3 0.3 0.3" src="#electro_scene_model_2" animation-mixer="clip: *" visible="false" class="electro-class"></a-gltf-model>
+        </a-entity>
         <!--конец электронщик-->
 
         <!--литейщик-->
@@ -188,6 +204,12 @@
         <a-entity mindar-face-target="anchorIndex: 10">
 	          <a-gltf-model rotation="0 0 0" position="0 -0.65 0.2" scale="0.075 0.07 0.065" src="#liteo_face_model_3" visible="false" class="liteo-class"></a-gltf-model>
         </a-entity>
+        <a-entity>
+	          <a-gltf-model position="-2.3 4.5 -20"rotation="10 80 0" scale="0.2 0.2 0.2" src="#liteo_scene_model_1" animation-mixer="clip: *" visible="false" class="liteo-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="1 -5 -20"rotation="10 45 0" scale="0.3 0.3 0.3" src="#liteo_scene_model_2" animation-mixer="clip: *" visible="false" class="liteo-class"></a-gltf-model>
+        </a-entity>
         <!--конец литейщик-->
 
         <!--itспец-->
@@ -198,6 +220,15 @@
         </a-entity>
         <a-entity mindar-face-target="anchorIndex: 10">
 	          <a-gltf-model rotation="0 0 0" position="0 -0.7 0.2" scale="0.075 0.07 0.065" src="#itwork_face_model_2" visible="false" class="itwork-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="-2.3 4 -20"rotation="5 10 0" scale="0.15 0.15 0.15" src="#itwork_scene_model_1" animation-mixer="clip: *" visible="false" class="itwork-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="-2.5 -3 -20"rotation="-15 40 0" scale="0.09 0.09 0.09" src="#itwork_scene_model_2" animation-mixer="clip: *" visible="false" class="itwork-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="2.4 -3.7 -20"rotation="-50 -30 0" scale="0.15 0.15 0.15" src="#itwork_scene_model_3" animation-mixer="clip: *" visible="false" class="itwork-class"></a-gltf-model>
         </a-entity>
         <!--конец itспец-->
 
@@ -212,6 +243,12 @@
         </a-entity>
         <a-entity mindar-face-target="anchorIndex: 10">
 	          <a-gltf-model rotation="0 0 0" position="0 -0.7 0.2" scale="0.075 0.07 0.065" src="#constructor_face_model_3" visible="false" class="constructor-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="-2.7 5 -20"rotation="90 20 10" scale="0.18 0.18 0.18" src="#constructor_scene_model_1" animation-mixer="clip: *" visible="false" class="constructor-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="1.7 -3.9 -20"rotation="0 -20 -10" scale="0.16 0.16 0.16" src="#constructor_scene_model_2" animation-mixer="clip: *" visible="false" class="constructor-class"></a-gltf-model>
         </a-entity>
         <!--конец конструктор-->
 
@@ -256,6 +293,9 @@
         </a-plane>
         <a-entity mindar-face-target="anchorIndex: 10">
 	          <a-gltf-model rotation="0 0 0" position="0 -0.55 0.2" scale="0.075 0.075 0.065" src="#ispitatel_face_model_1" visible="false" class="ispitatel-class"></a-gltf-model>
+        </a-entity>
+        <a-entity>
+	          <a-gltf-model position="1.8 -4.9 -20"rotation="0 -30 0" scale="0.32 0.32 0.32" src="#ispitatel_scene_model_1" animation-mixer="clip: *" visible="false" class="ispitatel-class"></a-gltf-model>
         </a-entity>
         <!--конец испытатель-->
 
