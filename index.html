@@ -7,16 +7,8 @@
     <script>
   var prof_iterator = 0;
 
+        
 
-    function enforceSize() {
-        document.body.style.width = '1080px';
-        document.body.style.height = '1920px';
-        window.scrollTo(0, 0);
-      }
-
-    // Применяем при загрузке и изменении размера
-    window.addEventListener('load', enforceSize);
-    window.addEventListener('resize', enforceSize);
 
     document.addEventListener("DOMContentLoaded", function() {
     const professions = ["default", "tokar", "electro", "liteo", "itwork", "constructor", "technolog", "halvanic", "svarshik", "ispitatel"];
@@ -44,6 +36,7 @@
             }
             visible_switch(prof_iterator);
       });
+
       /*-скрипт нажатия на стрелки-*/
       document.addEventListener('keydown', (event) => {
         switch(event.key) {
@@ -55,7 +48,6 @@
               prof_iterator=9;
             }
             visible_switch(prof_iterator);
-
           break;
           case 'ArrowRight':
             console.log('Стрелка вправо');
@@ -70,6 +62,8 @@
 
           break;
       }
+
+      
     });
     /*-конец скрипта нажатия на стрелки-*/
 
@@ -80,7 +74,7 @@
       }
       .example-container {
         overflow: hidden;
-        position: absolute;
+        position: fixed;
         width: 100%;
         height: 100%;
       }
@@ -114,6 +108,7 @@
           
           <!--ассеты изображения -->
           <img id="default_img" src="./default/default.png" crossorigin="anonymous"/>
+          <img id="background" src="./default/background.png" crossorigin="anonymous"/>
           <img id="tokar_img" src="./tokar/tokar.png" crossorigin="anonymous"/>
           <img id="electro_img" src="./electro/electro.png" crossorigin="anonymous"/>
           <img id="liteo_img" src="./liteo/liteo.png" crossorigin="anonymous"/>
@@ -178,13 +173,23 @@
         </a-assets>
 
         <!--камера и голова-->
-        <a-camera active="false" look-controls="enabled: false" wasd-controls="enabled: false" position="0 0 0" ></a-camera>
+        <a-camera active="true" look-controls="enabled: false" wasd-controls="enabled: false" position="0 0 0" ></a-camera>
         <a-entity mindar-face-target="anchorIndex: 168">
 	        <a-gltf-model mindar-face-occluder position="0 -0.3 0.15"rotation="0 0 0" scale="0.075 0.065 0.065" src="#headModel"></a-gltf-model>
         </a-entity>
         <!--конец камера и голова-->
 
         <!--дефолт-->
+        <a-plane src="#background" position="-1.2 0 -1" width="2" height="2" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true">
+        </a-plane>
+        <a-plane src="#background" position="1.2 0 -1" width="2" height="2" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true">
+        </a-plane>
+        <a-plane src="#background" position="0 1.35 -1" width="2" height="2" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true">
+        </a-plane>
+        <a-plane src="#background" position="0 -1.35 -1" width="2" height="2" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true">
+        </a-plane>
+
+
         <a-plane src="#default_img" position="0 0 -1" width="0.42" height="0.75" rotation="0 0 0" material="transparent: true; alphaTest: 0.5;" visible="true" class="default-class">
         </a-plane>
         <!--конец дефолт-->
