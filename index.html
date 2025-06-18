@@ -7,6 +7,17 @@
     <script>
   var prof_iterator = 0;
 
+
+    function enforceSize() {
+        document.body.style.width = '1080px';
+        document.body.style.height = '1920px';
+        window.scrollTo(0, 0);
+      }
+
+    // Применяем при загрузке и изменении размера
+    window.addEventListener('load', enforceSize);
+    window.addEventListener('resize', enforceSize);
+
     document.addEventListener("DOMContentLoaded", function() {
     const professions = ["default", "tokar", "electro", "liteo", "itwork", "constructor", "technolog", "halvanic", "svarshik", "ispitatel"];
     const professions_visibles = [true, false, false, false, false, false, false, false, false, false, false];
