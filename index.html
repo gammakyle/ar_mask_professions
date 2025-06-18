@@ -21,6 +21,18 @@
         console.log(professions_visibles);
         }
       })
+      /*-скрипт клика-*/
+      document.addEventListener('click', (event) => {
+        console.log('Стрелка вправо');
+            visible_switch(prof_iterator);
+            prof_iterator++;
+            if (prof_iterator==10){
+              prof_iterator=0;
+            }
+            else{
+            }
+            visible_switch(prof_iterator);
+      });
       /*-скрипт нажатия на стрелки-*/
       document.addEventListener('keydown', (event) => {
         switch(event.key) {
